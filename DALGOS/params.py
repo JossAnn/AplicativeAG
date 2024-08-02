@@ -15,12 +15,12 @@ def submit(paramsWindow, entries):
             "tsSAgustin": int(entries['tsSAgustin'].get()),
             "tsSuchiapa": int(entries['tsSuchiapa'].get()),
             
-            
-            "initialPopu": 20,
-            "maxiPopu": 50,
-            "mutationIndiProba": 10,
-            "mutationGenProba": 50,
-            "generationNumber": 30,
+            #Variables del AG (ocultas para el usuario)
+            "initialPopu": int(entries['initialPopu'].get()),
+            "maxiPopu": int(entries['maxiPopu'].get()),
+            "mutationIndiProba": int(entries['mutationIndiProba'].get()),
+            "mutationGenProba": int(entries['mutationGenProba'].get()),
+            "generationNumber": int(entries['generationNumber'].get()),
         }
         
         # Validar los datos
@@ -45,7 +45,7 @@ def submit(paramsWindow, entries):
         if total_ts < 100:
             raise ValueError("No se alcanza la tasa total de todas las personas que bajan en cada parada")
     
-    # guardar el JSON
+        # guardar el JSON
         os.makedirs('jsons', exist_ok=True)
         with open('jsons/params.json', 'w') as json_file:
             json.dump(params, json_file, indent=4)
@@ -62,34 +62,40 @@ def ventanaParametral():
     
     entries = {}
     
-    # A     float
+    # TERMINAL
     tk.Label(squaredParams, text="Personas que llegan a la terminal").grid(row=0, column=0)
     entries['entering'] = tk.Entry(squaredParams)
     entries['entering'].grid(row=0, column=1)
-    # B     float
+    # ABORDAMIENTO
     tk.Label(squaredParams, text="Tasa de personas que abordaran").grid(row=1, column=0)
     entries['tsAboard'] = tk.Entry(squaredParams)
     entries['tsAboard'].grid(row=1, column=1)
-    # tsBodega        float
-    tk.Label(squaredParams, text="Tasa de gente que baja en Bodega").grid(row=2, column=0)
+    # BODEGA
+    tk.Label(squaredParams, text="Tasa de movimiento en Bodega").grid(row=2, column=0)
     entries['tsBodega'] = tk.Entry(squaredParams)
     entries['tsBodega'].grid(row=2, column=1)
-    # Poblacion inicial     int
-    tk.Label(squaredParams, text="Tasa de gente que baja en Copoya").grid(row=4, column=0)
+    # COPOYA
+    tk.Label(squaredParams, text="Tasa de movimiento en Copoya").grid(row=4, column=0)
     entries['tsCopoya'] = tk.Entry(squaredParams)
     entries['tsCopoya'].grid(row=4, column=1)
-    # Poblacion maxima      int
-    tk.Label(squaredParams, text="Tasa de gente que baja en El Jobo").grid(row=5, column=0)
+    # EL JOBO
+    tk.Label(squaredParams, text="Tasa de movimiento en El Jobo").grid(row=5, column=0)
     entries['tsJobo'] = tk.Entry(squaredParams)
     entries['tsJobo'].grid(row=5, column=1)
-    # Probabilidad de mutacion DEL INDIVIDUO        float
-    tk.Label(squaredParams, text="Tasa de gente que baja en San Agustin").grid(row=6, column=0)
+    # sAN AGUSTIN
+    tk.Label(squaredParams, text="Tasa de movimiento en San Agustin").grid(row=6, column=0)
     entries['tsSAgustin'] = tk.Entry(squaredParams)
     entries['tsSAgustin'].grid(row=6, column=1)
-    # Probabilidad de mutaciOn DEL GEN (cada bit de la cadena de bits del individuo)        float
-    tk.Label(squaredParams, text="Tasa de gente que baja en Suchiapa").grid(row=7, column=0)
+    # SUCHIAPA
+    tk.Label(squaredParams, text="Tasa de movimiento en Suchiapa").grid(row=7, column=0)
     entries['tsSuchiapa'] = tk.Entry(squaredParams)
     entries['tsSuchiapa'].grid(row=7, column=1)
+    #ENTRADAS OCULTAS
+    entries['initialPopu'] = tk.Entry(squaredParams)
+    entries['maxiPopu'] = tk.Entry(squaredParams)
+    entries['mutationIndiProba'] = tk.Entry(squaredParams)
+    entries['mutationGenProba'] = tk.Entry(squaredParams)
+    entries['generationNumber'] = tk.Entry(squaredParams)
     
     # Valores predeterminados para la wea de las combis
     entries['entering'].insert(0, "200")
@@ -99,10 +105,17 @@ def ventanaParametral():
     entries['tsJobo'].insert(0, "20")
     entries['tsSAgustin'].insert(0, "20")
     entries['tsSuchiapa'].insert(0, "20")
+    #NOTA!!! entre tsBodega, tsCopoya, tsJobo, tsSAgustin, tsSuchiapa deben sumar 100
     
+    #valores predeterminados de entradas ocultas
+    entries['initialPopu'].insert(0, "20")
+    entries['maxiPopu'].insert(0, "50")
+    entries['mutationIndiProba'].insert(0, "10")
+    entries['mutationGenProba'].insert(0, "50")
+    entries['generationNumber'].insert(0, "30")
     
-    submit_button = tk.Button(squaredParams, text="Submit", command=lambda: submit(squaredParams, entries))
-    submit_button.grid(row=9, column=0, columnspan=2)
+    sendBtn = tk.Button(squaredParams, text="Submit", command=lambda: submit(squaredParams, entries))
+    sendBtn.grid(row=9, column=0, columnspan=2)
     
     squaredParams.mainloop()
 
