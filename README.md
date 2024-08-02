@@ -6,7 +6,7 @@ Para ver el instructivo de uso dirijase al archivo: [Instructions](Instructions.
 
 ## DALGOS como base, AlgoGen como referencia
 
-DALGOS no es mas que un nombre para la forma base en que se implementa el algoritmo, no es algun tipo de proyecto ni nada parecido. La caracteristica principal en la estructura de DALGOS es separar partes del codigo que sirven para diferentes cosas, se destacan entre ellas: 
+DALGOS no es mas que un nombre para la forma base en que se implementa el algoritmo, no es algun tipo de proyecto ni nada parecido. La caracteristica principal en la estructura de DALGOS es separar partes del codigo que sirven para diferentes cosas, se destacan entre ellas:
 
 1. Archivo de Ejecucion (main)
 2. Archivo de Emparejamiento
@@ -16,7 +16,7 @@ DALGOS no es mas que un nombre para la forma base en que se implementa el algori
 6. Archivo de Graficas
 7. Carpeta de jsons
 
-Por otro lado AlgoGen, si es un proyecto que aplica un algoritmo genetico que aplica a DALGOS como estructura para una problematica ficticia en la que se optimiza un valor. En dicho proyecto podremos identificar las 7 caracteristicas mas destacables de DALGOS. 
+Por otro lado AlgoGen, si es un proyecto que aplica un algoritmo genetico que aplica a DALGOS como estructura para una problematica ficticia en la que se optimiza un valor. En dicho proyecto podremos identificar las 7 caracteristicas mas destacables de DALGOS.
 
 Para mas detalles del proyecto AlgoGen (y la primera implementacion de DALGOS) dirijase a: [AlgoGen Project](https://github.com/JossAnn/AlgoGen.git "https://github.com/JossAnn/AlgoGen.git")
 
@@ -36,7 +36,7 @@ Para mas detalles del proyecto AlgoGen (y la primera implementacion de DALGOS) d
    4. Probabilidad de mutacion del gen
    5. Numero de generaciones
 
-![1722584667884](image/README/1722584667884.png)
+![ParamsSample.png](image/README/ParamsSample.png "Ejemplo de Parametros Enviado")
 
 #### Manejo de entrada y tasas
 
@@ -74,4 +74,4 @@ Los Ups son las personas que se suben en cada parada.
 1. Los Ups al igual que los drops, dependen de la tasa de movimiento de la parada pero varia en que no toma al abordaje total de personas para calcularse.
 2. En cada parada se van restando al total de personas abordadas las personas que ya bajaron. Es decir al abordaje total se le van restando los Dropeos de cada parada y al obtener esta nuebo numero de personas, se calcula la cantidad de gente que se convierte en un Up con ayuda de la tasa de movimiento,
 
-![1722584805900](image/README/1722584805900.png)
+![DropsAndUpsSample.png](image/README/DropsAndUpsSample.png "Ejemplo de DropsAndUps Recibido")
