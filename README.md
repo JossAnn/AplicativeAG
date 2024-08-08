@@ -14,7 +14,7 @@ DALGOS no es mas que un nombre para la forma base en que se implementa el algori
 4. Archivo de Mutacion
 5. Archivo de Poda
 6. Archivo de Graficas
-7. Carpeta de jsons
+7. Carpeta de salidas jsons
 
 Por otro lado AlgoGen, si es un proyecto que aplica un algoritmo genetico que aplica a DALGOS como estructura para una problematica ficticia en la que se optimiza un valor. En dicho proyecto podremos identificar las 7 caracteristicas mas destacables de DALGOS.
 
@@ -75,3 +75,6 @@ Los Ups son las personas que se suben en cada parada.
 2. En cada parada se van restando al total de personas abordadas las personas que ya bajaron. Es decir al abordaje total se le van restando los Dropeos de cada parada y al obtener esta nuebo numero de personas, se calcula la cantidad de gente que se convierte en un Up con ayuda de la tasa de movimiento,
 
 ![DropsAndUpsSample.png](image/README/DropsAndUpsSample.png "Ejemplo de DropsAndUps Recibido")
+
+
+jgv

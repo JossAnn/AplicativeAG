@@ -1,7 +1,7 @@
-import json
-import random
 from params import ventanaParametral
 from tasas import dropsAndUps
+from graphics import table
+import matplotlib.pyplot as plt
 
 def main():
     ventanaParametral()
@@ -22,13 +22,13 @@ def main():
         "generationNumber": 30      numero de generaciones
     }
     #"""
-    print(dropsAndUps())
+    dropsAndUps()
     """ 
     Ejemplo de DropsAndUps que se recibe
     {
         "toAboard": 177,            gente que abordo en la terminal
         "toBodega": 41,             gente que baja en bodega
-        "toCopoya": 34,             gente que baja en suchiapa
+        "toCopoya": 34,             gente que baja en copoya
         "toJobo": 30,               gente que baja en el jobo
         "toSAgustin": 40,           gente que baja en el san agustin
         "toSuchiapa": 32,           gente que baja en suchiapa
@@ -40,6 +40,7 @@ def main():
                                     si veo que todo va bien lo quitare, estoy probando)
     }
     #"""
+    table()
 
 if __name__ == "__main__":
     main()

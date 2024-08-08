@@ -9,6 +9,7 @@ def submit(paramsWindow, entries):
         params = {
             "entering": int(entries['entering'].get()),
             "tsAboard": int(entries['tsAboard'].get()),
+            "tsTuxtla": int(entries['tsTuxtla'].get()),
             "tsBodega": int(entries['tsBodega'].get()),
             "tsCopoya": int(entries['tsCopoya'].get()),
             "tsJobo":   int(entries['tsJobo'].get()),
@@ -91,6 +92,7 @@ def ventanaParametral():
     entries['tsSuchiapa'] = tk.Entry(squaredParams)
     entries['tsSuchiapa'].grid(row=7, column=1)
     #ENTRADAS OCULTAS
+    entries['tsTuxtla'] = tk.Entry(squaredParams)
     entries['initialPopu'] = tk.Entry(squaredParams)
     entries['maxiPopu'] = tk.Entry(squaredParams)
     entries['mutationIndiProba'] = tk.Entry(squaredParams)
@@ -105,9 +107,10 @@ def ventanaParametral():
     entries['tsJobo'].insert(0, "20")
     entries['tsSAgustin'].insert(0, "20")
     entries['tsSuchiapa'].insert(0, "20")
-    #NOTA!!! entre tsBodega, tsCopoya, tsJobo, tsSAgustin, tsSuchiapa deben sumar 100
+    #NOTA!!! entre tsTuxtla, tsBodega, tsCopoya, tsJobo, tsSAgustin, tsSuchiapa deben sumar 100
     
     #valores predeterminados de entradas ocultas
+    entries['tsTuxtla'].insert(0, "0")
     entries['initialPopu'].insert(0, "20")
     entries['maxiPopu'].insert(0, "50")
     entries['mutationIndiProba'].insert(0, "10")
