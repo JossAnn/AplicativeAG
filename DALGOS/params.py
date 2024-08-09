@@ -48,8 +48,8 @@ def submit(paramsWindow, entries):
     
         # guardar el JSON
         os.makedirs('jsons', exist_ok=True)
-        with open('jsons/params.json', 'w') as json_file:
-            json.dump(params, json_file, indent=4)
+        with open('jsons/params.json', 'w') as file:
+            json.dump(params, file, indent=4)
         json.dumps(params, indent=4)
         paramsWindow.destroy()
         

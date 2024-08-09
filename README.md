@@ -71,10 +71,39 @@ Los Drops son las personas que se bajan en cada parada.
 
 Los Ups son las personas que se suben en cada parada.
 
-1. Los Ups al igual que los drops, dependen de la tasa de movimiento de la parada pero varia en que no toma al abordaje total de personas para calcularse.
-2. En cada parada se van restando al total de personas abordadas las personas que ya bajaron. Es decir al abordaje total se le van restando los Dropeos de cada parada y al obtener esta nuebo numero de personas, se calcula la cantidad de gente que se convierte en un Up con ayuda de la tasa de movimiento,
+1. Los Ups al igual que los drops, dependen de la tasa de movimiento de la parada pero varia en que no toma al abordaje total de personas para calcularse
+2. En cada parada se van restando al total de personas abordadas las personas que ya bajaron. Es decir al abordaje total se le van restando los Dropeos de cada parada y al obtener esta nuebo numero de personas, se calcula la cantidad de gente que se convierte en un Up con ayuda de la tasa de movimiento
 
 ![DropsAndUpsSample.png](image/README/DropsAndUpsSample.png "Ejemplo de DropsAndUps Recibido")
 
+Actualizar los drops and ups, ejemplo de tabla de datos
 
-jgv
+![Table ](image/README/Table.png "DropsandUps")
+
+### Algoritmo Genetico
+
+Hasta ahora no se ha visto nada del algoritmo genetico sino de la generacion de personas. Esto por que la cantidad de personas que se generan debe ser cambiante siempre. A continuacion se presentan las partes y formas que componen al AG.
+
+#### Individuo
+
+El individuo se presenta como un grupo de colectivos. Este grupo de colectivos pretende con sus espacios, lograr la capacidad para transportar a todas las personas. Las capacidades de los colectivos varian entre 16 y 19 asientos y por lo tanto tenemos cuatro tipos de colectivos que pueden transportar parte del total de personas en espera.
+
+##### Estructura
+
+**[A, B, C, D ]**
+
+El individuo presenta una variable X, esta representa la cantidad de personas que hay esperando para subir y por tanto el objetivo al que la cantidad de espacios se deben cubrir.
+
+Tambien tenemos las constantes 16, 17, 18, 19.
+Las constantes, son el numero de asientos que un colectivo puede tener y por tanto la suma de ellos pretende alcanzar la variable X.
+
+##### Cromosomas
+
+El individuo, que es una agrupacion de colectivos de diferentes capacidades, contiene cuatro variables consonantes las cuales representan numeros enteros, estos numeros enteros son la cantidad de colectivos de su constante adjunta que se requerieren para alcanzar X.
+
+La cantidad de colectivos por el numero de asientos que tiene cada uno supone alcanzar la variabble X.
+
+#### Poblacion Inicial
+
+
+#### Evaluacion
