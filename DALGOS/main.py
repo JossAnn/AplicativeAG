@@ -3,11 +3,16 @@ from tasas import dropsAndUps
 from dalgos import dalgos
 from graphics import table, evoGraphic, finalTable
 from evaluation import fitness
+from pairing import pairAndCross
+from mutation import mutation
+from poda import poda
+from destroyer import destroy
 import json
+import os
 from tqdm import tqdm
 
 def main():
-    #ventanaParametral()
+    ventanaParametral()
     """ 
     Ejemplo de parametros que se reciben
     {
@@ -27,8 +32,12 @@ def main():
     Hay datos que se envian y que no se les da a conocer al usuario, sirven para la evolucion.
     #"""
     
+    jsonParamsPath = "jsons\\params.json"
+    with open(jsonParamsPath, "r") as json_file:
+        params = json.load(json_file)
+    generationNumber = params["generationNumber"]
     
-    #dropsAndUps()
+    dropsAndUps()
     """ 
     Ejemplo de DropsAndUps que se recibe
     {
@@ -47,31 +56,8 @@ def main():
     usados de otra manera
     #"""
 
-    
-    #table()
-    """
-    Forma para graficar la tabla:
-    |      Suben      |Bajan |Tuxtla   |Bodega   |Copoya   |Jobo     |San Agustin|Suchiapa |
-    |-----------+-----+------+---------+---------+---------+---------+-----------+---------|
-    |Tuxtla     | ups0|drops0|tuxtla1  |tuxtla2  |tuxtla3  |tuxtla4  |tuxtla5    |tuxtla6  |
-    |Bodega     | ups1|drops1|bodega1  |bodega2  |bodega3  |bodega4  |bodega5    |bodega6  |
-    |Copoya     | ups2|drops2|copoya1  |copoya2  |copoya3  |copoya4  |copoya5    |copoya6  |
-    |Jobo       | ups3|drops3|jobo1    |jobo2    |jobo3    |jobo4    |jobo5      |jobo6    |
-    |San Agustin| ups4|drops4|sAgustin1|sAgustin2|sAgustin3|sAgustin4|sAgustin5  |sAgustin6|
-    |Suchiapa   | ups5|drops5|suchiapa1|suchiapa2|suchiapa3|suchiapa4|suchiapa5  |suchiapa6|
-    |Total      | ups6|drops6|  vacio  |  vacio  |  vacio  |  vacio  |   vacio   |  vacio  |
-    
-    NOTA: Tecnicamente, los que bajan pueden ser las sumas de todas las celdas 1,2,3,4,5,6 de cada
-          una de las columnas, pero era mejor poner las sumas en un solo arreglo, ahora llamado "drops".
-    """
-    
-    contador = 0
-    while contador <= 50:
-        fitness(dalgos())#despues de esto inicia el ciclo
-        contador += 1
-    
-    evoGraphic()
-    finalTable()
+    population = dalgos()
+    fitness(population)#despues de esto inicia el ciclo
     """ 
     Ejemplo de lo que devuelve dalgos:
     [
@@ -94,20 +80,41 @@ def main():
     
     
     
-    
-    
-    """ 
-    jsonParamsPath = "jsons\\params.json"
-    with open(jsonParamsPath, "r") as json_file:
-        params = json.load(json_file)
-    generationNumber = params["generationNumber"]
-    
     i=1
     with tqdm(total=generationNumber, desc="Progreso de generaciones") as pbar:
         while i <= generationNumber:
+            population = population
+            population = poda(fitness(mutation(pairAndCross(population))))
+            
             pbar.update(1)
             i += 1
+    
+    pathResults = "RESULTS"
+    if not os.path.exists(pathResults):
+        os.makedirs(pathResults)
+
+    
+    table()
     """
+    Forma para graficar la tabla:
+    |      Suben      |Bajan |Tuxtla   |Bodega   |Copoya   |Jobo     |San Agustin|Suchiapa |
+    |-----------+-----+------+---------+---------+---------+---------+-----------+---------|
+    |Tuxtla     | ups0|drops0|tuxtla1  |tuxtla2  |tuxtla3  |tuxtla4  |tuxtla5    |tuxtla6  |
+    |Bodega     | ups1|drops1|bodega1  |bodega2  |bodega3  |bodega4  |bodega5    |bodega6  |
+    |Copoya     | ups2|drops2|copoya1  |copoya2  |copoya3  |copoya4  |copoya5    |copoya6  |
+    |Jobo       | ups3|drops3|jobo1    |jobo2    |jobo3    |jobo4    |jobo5      |jobo6    |
+    |San Agustin| ups4|drops4|sAgustin1|sAgustin2|sAgustin3|sAgustin4|sAgustin5  |sAgustin6|
+    |Suchiapa   | ups5|drops5|suchiapa1|suchiapa2|suchiapa3|suchiapa4|suchiapa5  |suchiapa6|
+    |Total      | ups6|drops6|  vacio  |  vacio  |  vacio  |  vacio  |   vacio   |  vacio  |
+    
+    NOTA: Tecnicamente, los que bajan pueden ser las sumas de todas las celdas 1,2,3,4,5,6 de cada
+          una de las columnas, pero era mejor poner las sumas en un solo arreglo, ahora llamado "drops".
+    """
+    
+    evoGraphic()
+    finalTable()
+    
+    destroy()
     
 if __name__ == "__main__":
     main()

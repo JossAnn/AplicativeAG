@@ -18,6 +18,7 @@ def submit(paramsWindow, entries):
             
             #Variables del AG (ocultas para el usuario)
             "initialPopu": int(entries['initialPopu'].get()),
+            "umbralCruza": float(entries['umbralCruza'].get()),
             "maxiPopu": int(entries['maxiPopu'].get()),
             "mutationIndiProba": int(entries['mutationIndiProba'].get()),
             "mutationGenProba": int(entries['mutationGenProba'].get()),
@@ -94,6 +95,7 @@ def ventanaParametral():
     #ENTRADAS OCULTAS
     entries['tsTuxtla'] = tk.Entry(squaredParams)
     entries['initialPopu'] = tk.Entry(squaredParams)
+    entries['umbralCruza'] = tk.Entry(squaredParams)
     entries['maxiPopu'] = tk.Entry(squaredParams)
     entries['mutationIndiProba'] = tk.Entry(squaredParams)
     entries['mutationGenProba'] = tk.Entry(squaredParams)
@@ -111,11 +113,12 @@ def ventanaParametral():
     
     #valores predeterminados de entradas ocultas
     entries['tsTuxtla'].insert(0, "0")
-    entries['initialPopu'].insert(0, "20")
-    entries['maxiPopu'].insert(0, "50")
-    entries['mutationIndiProba'].insert(0, "10")
+    entries['initialPopu'].insert(0, "1000")
+    entries['umbralCruza'].insert(0, "0.5")
+    entries['maxiPopu'].insert(0, "1000")
+    entries['mutationIndiProba'].insert(0, "50")
     entries['mutationGenProba'].insert(0, "50")
-    entries['generationNumber'].insert(0, "30")
+    entries['generationNumber'].insert(0, "100")
     
     sendBtn = tk.Button(squaredParams, text="Submit", command=lambda: submit(squaredParams, entries))
     sendBtn.grid(row=9, column=0, columnspan=2)
